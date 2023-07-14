@@ -1,3 +1,11 @@
+# Candidate Notes
+
+There were a few adjustments I did not make, but would look to make with more time:
+
+ - Add an an "ErrorMessage" property to the 'CalculateRebateResult' model to provide more context as to what went wrong to the user
+ - Providing more appropriate error messages from RebateService
+ - Look to create either a BaseStrategy class containing the base validation rules that apply to all rebate strategies, or create a set of 'Validators' that can be passed in
+
 # Smartwyre Developer Test Instructions
 
 In the 'RebateService.cs' file you will find a method for calculating a rebate. At a high level the steps for calculating a rebate are:
