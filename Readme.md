@@ -1,4 +1,4 @@
-# Stuart's Notes
+# Candidate Notes
 
 There were a few adjustments I did not make, but would look to make with more time:
 
