@@ -3,6 +3,7 @@ using Smartwyre.DeveloperTest.Types;
 using Smartwyre.DeveloperTest.Factories;
 using System.Collections.Generic;
 using Xunit;
+using System;
 
 namespace Smartwyre.DeveloperTest.Tests.Factories;
 
@@ -44,7 +45,7 @@ public class RebateStrategyFactoryTests
     }
 
     [Fact]
-    public void RebateStrategyFactory_GetStrategy_ReturnsNullWhenNoMatchingStrategyFound()
+    public void RebateStrategyFactory_GetStrategy_ThrowsExceptionWhenNoMatchingStrategyFound()
     {
         // Arrange
         var incentiveType = IncentiveType.AmountPerUom;
@@ -52,10 +53,7 @@ public class RebateStrategyFactoryTests
         strategyMock2.Setup(s => s.CanHandle(incentiveType)).Returns(false);
         strategyMock3.Setup(s => s.CanHandle(incentiveType)).Returns(false);
 
-        // Act
-        var result = factory.GetStrategy(incentiveType);
-
-        // Assert
-        Assert.Null(result);
+        // Act & Assert
+        Assert.Throws<InvalidOperationException>(() => factory.GetStrategy(incentiveType));
     }
 }
