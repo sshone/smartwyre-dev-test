@@ -1,4 +1,5 @@
 ﻿using Smartwyre.DeveloperTest.Types;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,6 +16,8 @@ public class RebateStrategyFactory : IRebateStrategyFactory
 
     public IRebateStrategy GetStrategy(IncentiveType incentiveType)
     {
-        return _rebateStrategies.FirstOrDefault(s => s.CanHandle(incentiveType));
+        var strategy = _rebateStrategies.FirstOrDefault(s => s.CanHandle(incentiveType));
+
+        return strategy ?? throw new InvalidOperationException($"No strategy found for incentive type: {incentiveType}");
     }
 }
